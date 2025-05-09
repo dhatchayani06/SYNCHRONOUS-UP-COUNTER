@@ -1,17 +1,16 @@
+### SYNCHRONOUS-UP-COUNTER
 
-## EXPERIMENT 11 :  IMPLEMENTATION OF SYNCHRONOUS UP COUNTER
-
-## AIM:
+**AIM:**
 
 To implement 4 bit synchronous up counter and validate functionality.
 
-## SOFTWARE REQUIRED:
+**SOFTWARE REQUIRED:**
 
 Quartus prime
 
-## THEORY
+**THEORY:**
 
-## 4 BIT SYNCHRONOUS UP COUNTER
+**4 bit synchronous UP Counter**
 
 If we enable each J-K flip-flop to toggle based on whether or not all preceding flip-flop outputs (Q) are “high,” we can obtain the same counting sequence as the asynchronous circuit without the ripple effect, since each flip-flop in this circuit will be clocked at exactly the same time:
 
@@ -27,32 +26,46 @@ Since the first (LSB) flip-flop needs to toggle at every clock pulse, its J and 
 The next flip-flop need only “recognize” that the first flip-flop’s Q output is high to be made ready to toggle, so no AND gate is needed.
 However, the remaining flip-flops should be made ready to toggle only when all lower-order output bits are “high,” thus the need for AND gates.
 
-## PROCEDURE :
- 1.Initialize the shift register to a known state (e.g., all zeros).
- 
- 2.Input a bit serially into the shift register.
- 
- 3.Shift the contents of the register one position to the right (or left).
- 
- 4.Output the shifted bit from the last stage of the register.
- 
- 5.Repeat steps 2-4 for each bit you want to input and shift.
- 
+**Procedure**
+
+1.Initialize the shift register to a known state (e.g., all zeros).
+
+2.Input a bit serially into the shift register.
+
+3.Shift the contents of the register one position to the right (or left).
+
+4.Output the shifted bit from the last stage of the register.
+
+5.Repeat steps 2-4 for each bit you want to input and shift.
 
 
-## PROGRAM :
-![EXP UP PROGRAM](https://github.com/user-attachments/assets/9cfd4a57-816c-40a7-a1ff-ee00c6d940ea)
+
+**PROGRAM**
+
+~~~
+module exp11(out,clk,rstn);
+input clk,rstn;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(!rstn)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
+~~~
 
 
-## RTL LOGIC UP COUNTER :
-![UP LOGIC DE](https://github.com/user-attachments/assets/1a17d74b-1ce6-471d-b962-e950d5c8ff4e)
+**RTL LOGIC UP COUNTER**
+![RTL DE UP COUNTER](https://github.com/user-attachments/assets/1b3a5fba-52d6-48ac-967a-2fe8538720ce)
 
+**TIMING DIAGRAM FOR IP COUNTER**
+![DE TIMING UP COUNTER](https://github.com/user-attachments/assets/772a2bcc-26a2-46d0-bad1-04f8111c5821)
 
-## TIMING DIAGRAM FOR IP COUNTER :
-![UP WAVE FORM](https://github.com/user-attachments/assets/d17a043b-aabe-44fc-8a65-a08cba89f986)
+**TRUTH TABLE**
+![DE TRUTH TABLE UP COUNTER](https://github.com/user-attachments/assets/0f8e6f83-7777-41eb-bfe2-56f2579e84e3)
 
-## TRUTH TABLE
-![TRUTHTABLE UP](https://github.com/user-attachments/assets/db284906-f159-43a8-8dc0-c85b1a234658)
+**RESULTS**
 
-## RESULT :
- Hence a 4 bit synchronous up counter is implemented correctly.
+Thus the program has been executed successfully.
